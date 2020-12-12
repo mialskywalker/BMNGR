@@ -18,18 +18,20 @@ public class MainActivity extends AppCompatActivity {
         Button btnAddIncome = findViewById(R.id.btnAddIncome);
         Button btnAddExpense = findViewById(R.id.btnAddExpense);
 
+        // button on click send to income activity
         btnAddIncome.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("Button Clicked");
+               // System.out.println("Button Clicked");
 
                 Intent incomeActivity = new Intent(getApplicationContext(), IncomeController.class);
                 startActivity(incomeActivity);
             }
         });
 
+        // button on click send to expense activity
         btnAddExpense.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("Button Clicked");
+                //System.out.println("Button Clicked");
 
                 Intent expenseActivity = new Intent(getApplicationContext(), ExpenseController.class);
                 startActivity(expenseActivity);
