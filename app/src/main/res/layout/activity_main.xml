@@ -12,6 +12,7 @@
         android:layout_height="50dp"
         android:gravity="center"
         android:text="Налични пари:"
+        android:textStyle="bold"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
