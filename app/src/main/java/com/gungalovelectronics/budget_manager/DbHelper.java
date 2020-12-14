@@ -9,37 +9,45 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
 
+
+    public static final String BUDGET_TABLE = "BUDGET_TABLE";
+    public static final String COLUMN_INCOME = "INCOME";
+    public static final String COLUMN_DATE = "DATE";
+    public static final String COLUMN_ID = "ID";
+
     public DbHelper(@Nullable Context context) {
-        super(context, Constants.DB_NAME, null, Constants.DB_VERSION);
+        super(context, "budget.db", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        String createTableStatement = "CREATE TABLE " + BUDGET_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_INCOME + " DOUBLE, " + COLUMN_DATE + " TEXT)";
 
-        db.execSQL(Constants.CREATE_TABLE);
-
+        db.execSQL(createTableStatement);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        db.execSQL("DROP TABLE IF EXISTS "+Constants.TABLE_NAME);
-        onCreate(db);
     }
 
-    //insert info function
 
-    public long insertInfo(String income, String expense, String budget, String timestamp){
+    public boolean addOne(BudgetModel budgetModel) {
 
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(Constants.COL_INCOME, income);
-        values.put(Constants.COL_EXPENSE, expense);
-        values.put(Constants.COL_TIMESTAMP, timestamp);
-        values.put(Constants.COL_BUDGET, budget);
+        ContentValues cv = new ContentValues();
 
-        long id = db.insert(Constants.TABLE_NAME, null, values);
-        db.close();
-        return id;
+        cv.put(COLUMN_INCOME, budgetModel.getIncome());
+        cv.put(COLUMN_DATE, budgetModel.getDate());
+
+        long insert = db.insert(BUDGET_TABLE, null, cv);
+        if (insert == -1) {
+            return false;
+        }
+        else {
+            return  true;
+        }
+
     }
+
 }

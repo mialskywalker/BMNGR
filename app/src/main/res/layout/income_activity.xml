@@ -79,7 +79,7 @@
         app:layout_constraintTop_toBottomOf="@+id/add_income" />
 
     <EditText
-        android:id="@+id/editText_income"
+        android:id="@+id/et_income"
         android:layout_width="295dp"
         android:layout_height="53dp"
         android:ems="10"

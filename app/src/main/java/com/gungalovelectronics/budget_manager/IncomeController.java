@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,8 +27,7 @@ public class IncomeController extends AppCompatActivity {
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
-    private String income, expense, timestamp, budget;
-    private DbHelper dbHelper;
+    Button btnAdd;
     EditText incomeET;
 
     @Override
@@ -39,12 +39,10 @@ public class IncomeController extends AppCompatActivity {
 
         mDisplayDate = (TextView) findViewById(R.id.textView_date);
         Button btnBack = findViewById(R.id.button_back);
-        Button btnAdd = findViewById(R.id.button_addIncome);
+        btnAdd = findViewById(R.id.button_addIncome);
+        incomeET = findViewById(R.id.et_income);
 
-        incomeET = findViewById(R.id.editText_income);
 
-        //database object
-        dbHelper = new DbHelper(this);
 
 
         mDisplayDate.setOnClickListener(new View.OnClickListener(){
@@ -93,20 +91,30 @@ public class IncomeController extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //get info
-                getData();
+                BudgetModel budgetModel;
+
+                try {
+                    budgetModel = new BudgetModel(-1, Double.parseDouble(incomeET.getText().toString()), mDisplayDate.getText().toString());
+                    Toast.makeText(IncomeController.this, "Успешно добавяне!", Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception e) {
+
+                    Toast.makeText(IncomeController.this, "Невалидни данни!", Toast.LENGTH_SHORT).show();
+                    budgetModel = new BudgetModel(-1, 0.0, "error");
+                }
+
+                DbHelper dbHelper = new DbHelper(IncomeController.this);
+
+                boolean success = dbHelper.addOne(budgetModel);
+
+                Toast.makeText(IncomeController.this, "Success= " + success, Toast.LENGTH_SHORT).show();
+
+
             }
         });
 
     }
 
-    private void getData() {
 
-        income = ""+incomeET.getText().toString().trim();
-        timestamp = ""+mDisplayDate.getText().toString().trim();
-
-
-        Toast.makeText(this, "Успешно добавяне!", Toast.LENGTH_SHORT).show();
-    }
 
 }
