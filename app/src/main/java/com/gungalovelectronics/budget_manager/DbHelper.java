@@ -28,7 +28,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS " + BUDGET_TABLE);
+        onCreate(db);
     }
 
 
@@ -48,6 +49,12 @@ public class DbHelper extends SQLiteOpenHelper {
             return  true;
         }
 
+    }
+
+    //
+    public Integer deleteOne(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(BUDGET_TABLE,"COLUMN_ID = ?",new String [] {id});
     }
 
 }
