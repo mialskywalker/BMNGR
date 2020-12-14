@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
-        android:id="@+id/button_add"
+        android:id="@+id/button_addExpense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
         android:text="Назад"
-        app:layout_constraintEnd_toStartOf="@+id/button_add"
+        app:layout_constraintEnd_toStartOf="@+id/button_addExpense"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_date" />
@@ -77,5 +77,18 @@
         app:layout_constraintHorizontal_bias="0.553"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_expense" />
+
+    <EditText
+        android:id="@+id/editText_expense"
+        android:layout_width="295dp"
+        android:layout_height="53dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:hint="Въведи сума"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/textView_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,16 +19,18 @@ import java.util.Calendar;
 
 public class IncomeController extends AppCompatActivity {
 
+
     private static final String TAG = "IncomeController";
 
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.income_activity);
+
+
 
         mDisplayDate = (TextView) findViewById(R.id.textView_date);
         Button btnBack = findViewById(R.id.button_back);
@@ -48,6 +51,8 @@ public class IncomeController extends AppCompatActivity {
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
             }
+
+
         });
 
         // back button to --> (MainActivity)
