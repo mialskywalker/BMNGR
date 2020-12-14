@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Budget_manager">
-        <activity android:name=".IncomeController"></activity>
-        <activity android:name=".ExpenseController"></activity>
+        <activity android:name=".DataVisualisation"></activity>
+        <activity android:name=".IncomeController" />
+        <activity android:name=".ExpenseController" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
