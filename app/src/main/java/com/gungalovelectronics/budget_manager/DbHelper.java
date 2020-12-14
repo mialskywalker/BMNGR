@@ -2,6 +2,7 @@ package com.gungalovelectronics.budget_manager;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -55,6 +56,17 @@ public class DbHelper extends SQLiteOpenHelper {
     public Integer deleteOne(String id){
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(BUDGET_TABLE,"COLUMN_ID = ?",new String [] {id});
+    }
+
+    Cursor readAllData(){
+        String query = "SELECT * FROM " + BUDGET_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+            return cursor;
     }
 
 }
