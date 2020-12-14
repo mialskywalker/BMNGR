@@ -8,44 +8,38 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "budget.db";
-    public static final String TABLE_NAME = "budget_table";
-    public static final String COL_ID = "ID";
-    public static final String COL_INCOME = "INCOME";
-    public static final String COL_EXPENSE = "EXPENSE";
-    public static final String COL_BUDGET = "BUDGET";
-    public static final String COL_TIMESTAMP = "DATE";
 
     public DbHelper(@Nullable Context context) {
-        super(context, DATABASE_NAME, null, 1);
-        //SQLiteDatabase db = this.getWritableDatabase();
+        super(context, Constants.DB_NAME, null, Constants.DB_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME +
-                " (ID INTEGER PRIMARY KEY AUTOINCREMENT, INCOME INTEGER, EXPENSE INTEGER, BUDGET INTEGER, DATE TEXT)");
+
+        db.execSQL(Constants.CREATE_TABLE);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+
+        db.execSQL("DROP TABLE IF EXISTS "+Constants.TABLE_NAME);
         onCreate(db);
     }
 
-    public boolean insertData(String name, String income, String expense, String budget, String date) {
+    //insert info function
+
+    public long insertInfo(String income, String expense, String budget, String timestamp){
+
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_INCOME, income);
-        contentValues.put(COL_EXPENSE, expense);
-        contentValues.put(COL_BUDGET, budget);
-        contentValues.put(COL_TIMESTAMP, date);
-        long result = db.insert(TABLE_NAME, null, contentValues);
-        if (result == -1) {
-            return false;
-        }
-        else {
-            return true;
-        }
+        ContentValues values = new ContentValues();
+        values.put(Constants.COL_INCOME, income);
+        values.put(Constants.COL_EXPENSE, expense);
+        values.put(Constants.COL_TIMESTAMP, timestamp);
+        values.put(Constants.COL_BUDGET, budget);
+
+        long id = db.insert(Constants.TABLE_NAME, null, values);
+        db.close();
+        return id;
     }
 }

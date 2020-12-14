@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,6 +26,10 @@ public class IncomeController extends AppCompatActivity {
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
+    private String income, expense, timestamp, budget;
+    private DbHelper dbHelper;
+    EditText incomeET;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +39,13 @@ public class IncomeController extends AppCompatActivity {
 
         mDisplayDate = (TextView) findViewById(R.id.textView_date);
         Button btnBack = findViewById(R.id.button_back);
+        Button btnAdd = findViewById(R.id.button_addIncome);
+
+        incomeET = findViewById(R.id.editText_income);
+
+        //database object
+        dbHelper = new DbHelper(this);
+
 
         mDisplayDate.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -75,5 +87,26 @@ public class IncomeController extends AppCompatActivity {
                 mDisplayDate.setText(date);
             }
         };
+
+        // add button
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //get info
+                getData();
+            }
+        });
+
     }
+
+    private void getData() {
+
+        income = ""+incomeET.getText().toString().trim();
+        timestamp = ""+mDisplayDate.getText().toString().trim();
+
+
+        Toast.makeText(this, "Успешно добавяне!", Toast.LENGTH_SHORT).show();
+    }
+
 }
