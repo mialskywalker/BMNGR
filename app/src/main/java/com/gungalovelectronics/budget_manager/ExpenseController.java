@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +23,8 @@ public class ExpenseController extends AppCompatActivity {
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
+    Button btnAdd;
+    EditText expenseET;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,8 @@ public class ExpenseController extends AppCompatActivity {
 
         mDisplayDate = (TextView) findViewById(R.id.textView_date);
         Button btnBack = findViewById(R.id.button_back);
+        btnAdd = findViewById(R.id.button_addExpense);
+        expenseET = findViewById(R.id.et_expense);
 
         mDisplayDate.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -68,5 +74,31 @@ public class ExpenseController extends AppCompatActivity {
                 mDisplayDate.setText(date);
             }
         };
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                BudgetModel budgetModel;
+
+                try {
+                    budgetModel = new BudgetModel(-1, Double.parseDouble(expenseET.getText().toString()), mDisplayDate.getText().toString());
+                    Toast.makeText(ExpenseController.this, "Успешно добавяне!", Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception e) {
+
+                    Toast.makeText(ExpenseController.this, "Невалидни данни!", Toast.LENGTH_SHORT).show();
+                    budgetModel = new BudgetModel(-1, 0.0, "error");
+                }
+
+                DbHelper dbHelper = new DbHelper(ExpenseController.this);
+
+                boolean success = dbHelper.addOne(budgetModel);
+
+                Toast.makeText(ExpenseController.this, "Success= " + success, Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
     }
 }
