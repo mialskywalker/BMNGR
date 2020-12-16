@@ -82,7 +82,7 @@ public class ExpenseController extends AppCompatActivity {
                 BudgetModel budgetModel;
 
                 try {
-                    budgetModel = new BudgetModel(-1, Double.parseDouble(expenseET.getText().toString()), mDisplayDate.getText().toString());
+                    budgetModel = new BudgetModel(-1, Double.parseDouble(expenseET.getText().toString())*-1, mDisplayDate.getText().toString());
                     Toast.makeText(ExpenseController.this, "Успешно добавяне!", Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e) {
