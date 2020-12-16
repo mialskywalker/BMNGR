@@ -72,12 +72,13 @@ public class DbHelper extends SQLiteOpenHelper {
             return cursor;
     }
 
-    void updateData(String row_id, double income){
+    void updateData(String row_id, double income, String date){
          SQLiteDatabase db = this.getWritableDatabase();
          ContentValues cv = new ContentValues();
          cv.put(COLUMN_INCOME, income);
+         cv.put(COLUMN_DATE, date);
 
-         long result = db.update(BUDGET_TABLE, cv, "ID",new String[] {row_id});
+         long result = db.update(BUDGET_TABLE, cv, "ID=?",new String[] {row_id});
          if(result == -1){
              Toast.makeText(context, "Failed to Update", Toast.LENGTH_SHORT).show();
          }

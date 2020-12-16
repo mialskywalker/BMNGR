@@ -2,6 +2,7 @@ package com.gungalovelectronics.budget_manager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +12,7 @@ import android.widget.Toast;
 public class UpdateActivity extends AppCompatActivity {
 
     EditText newValue;
-    String id, income;
+    String id, income, date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,20 +22,24 @@ public class UpdateActivity extends AppCompatActivity {
         newValue = findViewById(R.id.et_input);
         Button updateButton = findViewById(R.id.et_button);
 
+        getAndSetIntentData();
+
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                DbHelper myDB = new DbHelper(UpdateActivity.this);
+                myDB.updateData(id, Double.parseDouble(income), date);
+                Intent intent = new Intent(getApplicationContext(), DataVisualisation.class);
+                startActivity(intent);
             }
         });
         getAndSetIntentData();
-        DbHelper myDB = new DbHelper(UpdateActivity.this);
-//        myDB.updateData(id, Double.parseDouble(income));
     }
 
     void getAndSetIntentData(){
         if(getIntent().hasExtra("income")){
             //Getting Data
+            date = getIntent().getStringExtra("date");
             income = getIntent().getStringExtra("income");
             id = getIntent().getStringExtra("id");
 
