@@ -73,11 +73,11 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     //need fixing
-    void updateData(String row_id, double income, String date){
+    void updateData(String row_id, double income){
          SQLiteDatabase db = this.getWritableDatabase();
          ContentValues cv = new ContentValues();
          cv.put(COLUMN_INCOME, income);
-         cv.put(COLUMN_DATE, date);
+//         cv.put(COLUMN_DATE, date);
 
          long result = db.update(BUDGET_TABLE, cv, "ID=?",new String[] {row_id});
          if(result == -1){
@@ -87,6 +87,12 @@ public class DbHelper extends SQLiteOpenHelper {
              Toast.makeText(context, "Successfully Updated!", Toast.LENGTH_SHORT).show();
          }
     }
+
+//    void updateData(double newValue, String id){
+//         SQLiteDatabase db = this.getWritableDatabase();
+//         String query = "UPDATE " + BUDGET_TABLE + " SET " + COLUMN_INCOME + " = " + newValue + " WHERE " + COLUMN_ID + " = " + id + ";";
+//         db.execSQL(query);
+//    }
 
     void deleteOneRow(String row_id){
          SQLiteDatabase db = this.getWritableDatabase();
