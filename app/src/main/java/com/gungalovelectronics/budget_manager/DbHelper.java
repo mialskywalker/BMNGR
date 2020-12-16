@@ -5,19 +5,22 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
 
+    private Context context;
 
     public static final String BUDGET_TABLE = "BUDGET_TABLE";
     public static final String COLUMN_INCOME = "INCOME";
     public static final String COLUMN_DATE = "DATE";
     public static final String COLUMN_ID = "ID";
 
-    public DbHelper(@Nullable Context context) {
+     DbHelper(@Nullable Context context) {
         super(context, "budget.db", null, 1);
+        this.context = context;
     }
 
     @Override
@@ -67,6 +70,20 @@ public class DbHelper extends SQLiteOpenHelper {
             cursor = db.rawQuery(query, null);
         }
             return cursor;
+    }
+
+    void updateData(String row_id, double income){
+         SQLiteDatabase db = this.getWritableDatabase();
+         ContentValues cv = new ContentValues();
+         cv.put(COLUMN_INCOME, income);
+
+         long result = db.update(BUDGET_TABLE, cv, "ID",new String[] {row_id});
+         if(result == -1){
+             Toast.makeText(context, "Failed to Update", Toast.LENGTH_SHORT).show();
+         }
+         else{
+             Toast.makeText(context, "Successfully Updated!", Toast.LENGTH_SHORT).show();
+         }
     }
 
 }
