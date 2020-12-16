@@ -72,6 +72,7 @@ public class DbHelper extends SQLiteOpenHelper {
             return cursor;
     }
 
+    //need fixing
     void updateData(String row_id, double income, String date){
          SQLiteDatabase db = this.getWritableDatabase();
          ContentValues cv = new ContentValues();
@@ -86,5 +87,17 @@ public class DbHelper extends SQLiteOpenHelper {
              Toast.makeText(context, "Successfully Updated!", Toast.LENGTH_SHORT).show();
          }
     }
+
+    void deleteOneRow(String row_id){
+         SQLiteDatabase db = this.getWritableDatabase();
+         long result = db.delete(BUDGET_TABLE, "ID=?", new String[]{row_id});
+        if(result == -1){
+            Toast.makeText(context, "Failed to delete", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(context, "Successfully deleted!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
 }

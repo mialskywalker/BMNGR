@@ -29,8 +29,6 @@ public class DataVisualisation extends AppCompatActivity {
         Button btnBack = findViewById(R.id.button_back);
         recyclerView = findViewById(R.id.RecV);
 
-
-
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
