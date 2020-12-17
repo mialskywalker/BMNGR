@@ -38,7 +38,7 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DbHelper myDB = new DbHelper(UpdateActivity.this);
-                myDB.updateData(id, Double.parseDouble(String.valueOf(newValue)));
+                myDB.updateData(id, Double.parseDouble(String.valueOf(newValue)), date);
                 Intent intent = new Intent(getApplicationContext(), DataVisualisation.class);
                 startActivity(intent);
             }

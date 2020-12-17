@@ -45,6 +45,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 Intent intent = new Intent(context, UpdateActivity.class);
                 intent.putExtra("income", String.valueOf(column_income.get(position)));
                 intent.putExtra("id", String.valueOf(column_id.get(position)));
+                intent.putExtra("date", String.valueOf(column_date.get(position)));
                 context.startActivity(intent);
             }
         });
