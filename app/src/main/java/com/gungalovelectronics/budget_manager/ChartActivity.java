@@ -25,22 +25,18 @@ public class ChartActivity extends AppCompatActivity {
 
         BarChart barChart = findViewById(R.id.Chart);
 
-        ArrayList<BarEntry> visitors = new ArrayList<>();
+        ArrayList<BarEntry> budget = new ArrayList<>();
 
         DbHelper db = new DbHelper(this);
         Cursor cursor = db.readAllData();
         int i = 1;
         while(cursor.moveToNext()){
-            visitors.add(new BarEntry( i,Integer.parseInt(cursor.getString(1))));
+            budget.add(new BarEntry( i,Integer.parseInt(cursor.getString(1))));
             i++;
         }
-//        visitors.add(new BarEntry(2015,420));
-//        visitors.add(new BarEntry(2016,-320));
-//        visitors.add(new BarEntry(2017,720));
-//        visitors.add(new BarEntry(2018,520));
-//        visitors.add(new BarEntry(2019,820));
 
-        BarDataSet barDataSet = new BarDataSet(visitors, "Visitors");
+
+        BarDataSet barDataSet = new BarDataSet(budget, "Budget");
         barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         barDataSet.setValueTextColor(Color.BLACK);
         barDataSet.setValueTextSize(16f);
