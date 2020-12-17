@@ -93,6 +93,8 @@ public class ExpenseController extends AppCompatActivity {
 
                 DbHelper dbHelper = new DbHelper(ExpenseController.this);
 
+                boolean success = dbHelper.addOne(budgetModel);
+
 
             }
         });
