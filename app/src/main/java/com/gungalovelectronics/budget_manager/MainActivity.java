@@ -24,11 +24,11 @@ public class MainActivity extends AppCompatActivity {
         TextView AvbMoney = findViewById(R.id.available_money);
 
 
-        int MainBudjetValue = 0;
+        double MainBudjetValue = 0;
         DbHelper db = new DbHelper(this);
         Cursor cursor = db.readAllData();
             while(cursor.moveToNext()){
-                MainBudjetValue += Integer.parseInt(cursor.getString(1));
+                MainBudjetValue += Double.parseDouble(cursor.getString(1));
             }
 
         AvbMoney.setText(String.valueOf(MainBudjetValue));
