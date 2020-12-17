@@ -13,6 +13,8 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.github.mikephil.charting.utils.ColorTemplate.*;
 
@@ -27,11 +29,24 @@ public class ChartActivity extends AppCompatActivity {
 
         ArrayList<BarEntry> budget = new ArrayList<>();
 
+        Map<String, Double> hmap = new HashMap<>();
         DbHelper db = new DbHelper(this);
         Cursor cursor = db.readAllData();
         int i = 1;
         while(cursor.moveToNext()){
-            budget.add(new BarEntry( i,Integer.parseInt(cursor.getString(1))));
+//            budget.add(new BarEntry( i,Integer.parseInt(cursor.getString(1))));
+//            i++;
+            if(hmap.get(cursor.getString(2)) == null){
+                hmap.put(cursor.getString(2), Double.parseDouble(cursor.getString(1)));
+            }
+            else{
+                hmap.put(cursor.getString(2), hmap.get(cursor.getString(2)) + Double.parseDouble(cursor.getString(1)));
+            }
+        }
+
+        for(String t : hmap.keySet()){
+            double val = hmap.get(t);
+            budget.add(new BarEntry(i, (float) val));
             i++;
         }
 
