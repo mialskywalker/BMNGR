@@ -105,10 +105,6 @@ public class IncomeController extends AppCompatActivity {
 
                 DbHelper dbHelper = new DbHelper(IncomeController.this);
 
-                boolean success = dbHelper.addOne(budgetModel);
-
-                Toast.makeText(IncomeController.this, "Success= " + success, Toast.LENGTH_SHORT).show();
-
 
             }
         });
