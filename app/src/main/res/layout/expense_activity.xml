@@ -11,7 +11,7 @@
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:gravity="center"
-        android:text="Добави разход"
+        android:text="Add Expense"
         android:textSize="33sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="292dp"
-        android:hint="Изберете дата"
+        android:hint="Date"
         android:textSize="30dp"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,13 +39,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
-        android:text="Добавяне"
+        android:text="Add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.78"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_date" />
 
-    <Switch
+   <!-- <Switch
         android:id="@+id/switch_income"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,25 +53,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.884"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_expense" />
+        app:layout_constraintTop_toBottomOf="@+id/add_expense" /> -->
 
     <Button
         android:id="@+id/button_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
-        android:text="Назад"
+        android:text="Go Back"
         app:layout_constraintEnd_toStartOf="@+id/button_addExpense"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_date" />
 
-    <TextView
+   <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="Повтарящ се разход"
+        android:text=""
         android:textSize="23sp"
         app:layout_constraintEnd_toStartOf="@+id/switch_income"
         app:layout_constraintHorizontal_bias="0.553"
@@ -84,7 +84,7 @@
         android:layout_height="53dp"
         android:ems="10"
         android:inputType="numberDecimal"
-        android:hint="Въведи сума"
+        android:hint="Enter a value"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/textView_date"
         app:layout_constraintEnd_toEndOf="parent"
