@@ -1,6 +1,5 @@
-package com.gungalovelectronics.budget_manager;
+package com.MialAndroid.budget_manager;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 

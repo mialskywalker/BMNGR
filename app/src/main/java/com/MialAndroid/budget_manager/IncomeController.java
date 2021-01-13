@@ -1,4 +1,4 @@
-package com.gungalovelectronics.budget_manager;
+package com.MialAndroid.budget_manager;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -10,13 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.text.DateFormat;
 import java.util.Calendar;
 
 public class IncomeController extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.gungalovelectronics.budget_manager;
+package com.MialAndroid.budget_manager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,8 +15,6 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.github.mikephil.charting.utils.ColorTemplate.*;
 
 public class ChartActivity extends AppCompatActivity {
 

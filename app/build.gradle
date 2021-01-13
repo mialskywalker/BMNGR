@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.gungalovelectronics.budget_manager"
+        applicationId "com.MialAndroid.budget_manager"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1

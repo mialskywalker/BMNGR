@@ -1,4 +1,4 @@
-package com.gungalovelectronics.budget_manager;
+package com.MialAndroid.budget_manager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;

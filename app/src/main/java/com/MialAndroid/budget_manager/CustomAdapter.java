@@ -1,4 +1,4 @@
-package com.gungalovelectronics.budget_manager;
+package com.MialAndroid.budget_manager;
 
 import android.content.Context;
 import android.content.Intent;
