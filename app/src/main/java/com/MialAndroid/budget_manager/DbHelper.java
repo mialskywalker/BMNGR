@@ -13,7 +13,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private Context context;
 
-    public static final String BUDGET_TABLE = "BUDGET_TABLE";
+    public static final String BUDGET_TABLE = "BUDGET_TABLE";//
     public static final String COLUMN_INCOME = "INCOME";
     public static final String COLUMN_DATE = "DATE";
     public static final String COLUMN_ID = "ID";
