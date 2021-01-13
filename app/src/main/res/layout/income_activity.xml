@@ -73,10 +73,23 @@
         android:layout_marginTop="60dp"
         android:text=""
         android:textSize="23sp"
-        app:layout_constraintEnd_toStartOf="@+id/switch_income"
         app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_income" />
+
+    <EditText
+        android:id="@+id/et_income_text"
+        android:layout_width="295dp"
+        android:layout_height="53dp"
+        android:ems="10"
+        android:hint="Enter description"
+        android:inputType="text"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/et_income"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.276" />
 
     <EditText
         android:id="@+id/et_income"
