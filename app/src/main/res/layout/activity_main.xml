@@ -11,7 +11,7 @@
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:gravity="center"
-        android:text="Total:"
+        android:text="Current Budget:"
         android:textStyle="bold"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,7 +40,7 @@
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:gravity="center"
-        android:text="Налични пари:"
+        android:text="Total:"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintHorizontal_bias="0.496"
@@ -53,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/red"
-        android:text="Добави разход"
+        android:text="Add Expense"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="156dp"
-        android:text="Добави приход"
+        android:text="Add Income"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:backgroundTint="@color/green"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +80,7 @@
         android:layout_width="157dp"
         android:layout_height="45dp"
         android:layout_marginTop="280dp"
-        android:text="Преглед"
+        android:text="History"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:backgroundTint="@color/lightblue"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +88,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/available_money" />
 
-    <Button
+    <!-- <Button
         android:id="@+id/btnChart"
         android:layout_width="157dp"
         android:layout_height="48dp"
@@ -100,7 +100,7 @@
         android:text="Графика"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnViewData" />
+        app:layout_constraintTop_toBottomOf="@+id/btnViewData" /> -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
