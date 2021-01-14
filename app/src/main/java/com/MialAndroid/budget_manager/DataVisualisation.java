@@ -18,7 +18,7 @@ public class DataVisualisation extends AppCompatActivity {
     RecyclerView recyclerView;
 
     DbHelper myDB;
-    ArrayList<String> column_income, column_date, column_id;
+    ArrayList<String> column_income, column_date, column_id, column_desc;
     CustomAdapter customAdapter;
 
     @Override
@@ -41,10 +41,11 @@ public class DataVisualisation extends AppCompatActivity {
         column_income = new ArrayList<>();
         column_date = new ArrayList<>();
         column_id = new ArrayList<>();
+        column_desc = new ArrayList<>();
 
         storeDatainArrays();
 
-        customAdapter = new CustomAdapter(DataVisualisation.this, column_income, column_date, column_id);
+        customAdapter = new CustomAdapter(DataVisualisation.this, column_income, column_date, column_id, column_desc);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(DataVisualisation.this));
     }
@@ -55,9 +56,10 @@ public class DataVisualisation extends AppCompatActivity {
             Toast.makeText(this,"No data", Toast.LENGTH_SHORT).show();
         }   else{
             while(cursor.moveToNext()){
-                column_income.add(cursor.getString(1));
-                column_date.add(cursor.getString(2));
+                column_income.add(cursor.getString(2));
+                column_date.add(cursor.getString(3));
                 column_id.add(cursor.getString(0));
+                column_desc.add(cursor.getString(1));
             }
         }
     }

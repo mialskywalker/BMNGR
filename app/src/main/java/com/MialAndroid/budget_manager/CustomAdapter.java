@@ -16,15 +16,16 @@ import java.util.ArrayList;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
     private Context context;
-    private ArrayList<String> column_income, column_date, column_id;
+    private ArrayList<String> column_income, column_date, column_id, column_desc;
 
 //    int position;
 
-    CustomAdapter(Context context, ArrayList column_income, ArrayList column_date, ArrayList column_id){
+    CustomAdapter(Context context, ArrayList column_income, ArrayList column_date, ArrayList column_id, ArrayList column_desc){
         this.context = context;
         this.column_income = column_income;
         this.column_date = column_date;
         this.column_id = column_id;
+        this.column_desc = column_desc;
     }
     @NonNull
     @Override
@@ -39,6 +40,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 //        this.position = position;
         holder.IncomeValueTV.setText(String.valueOf(column_income.get(position)));
         holder.IncomeDateTV.setText(String.valueOf(column_date.get(position)));
+        holder.IncomeDescTV.setText(String.valueOf(column_desc.get(position)));
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,6 +48,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 intent.putExtra("income", String.valueOf(column_income.get(position)));
                 intent.putExtra("id", String.valueOf(column_id.get(position)));
                 intent.putExtra("date", String.valueOf(column_date.get(position)));
+                intent.putExtra("description", String.valueOf(column_desc.get(position)));
                 context.startActivity(intent);
             }
         });
@@ -58,13 +61,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView IncomeValueTV, IncomeDateTV;
+        TextView IncomeValueTV, IncomeDateTV, IncomeDescTV;
         LinearLayout mainLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             IncomeValueTV = itemView.findViewById(R.id.IncomeValueTV);
             IncomeDateTV = itemView.findViewById(R.id.IncomeDateTV);
+            IncomeDescTV = itemView.findViewById(R.id.IncomeDescTV);
             mainLayout = itemView.findViewById(R.id.mainLayout);
         }
     }
