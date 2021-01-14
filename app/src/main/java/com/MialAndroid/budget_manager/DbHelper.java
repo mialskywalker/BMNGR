@@ -13,7 +13,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private Context context;
 
-    public static final String BUDGET_TABLE = "BUDGET_TABLE";//
+    public static final String BUDGET_TABLE = "BUDGET_TABLE";
+    public static final String COLUMN_DESCRIPTION = "DESCRIPTION";
     public static final String COLUMN_INCOME = "INCOME";
     public static final String COLUMN_DATE = "DATE";
     public static final String COLUMN_ID = "ID";
@@ -25,7 +26,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableStatement = "CREATE TABLE " + BUDGET_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_INCOME + " DOUBLE, " + COLUMN_DATE + " TEXT)";
+        String createTableStatement = "CREATE TABLE " + BUDGET_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_DESCRIPTION + " TEXT, " + COLUMN_INCOME + " DOUBLE, " + COLUMN_DATE + " TEXT)";
 
         db.execSQL(createTableStatement);
     }
@@ -42,6 +43,7 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
+        cv.put(COLUMN_DESCRIPTION, budgetModel.getDescription());
         cv.put(COLUMN_INCOME, budgetModel.getIncome());
         cv.put(COLUMN_DATE, budgetModel.getDate());
 
@@ -73,9 +75,10 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     //need fixing
-    void updateData(String row_id, double income, String date){
+   /* void updateData(String row_id, double income, String date, String description){
          SQLiteDatabase db = this.getWritableDatabase();
          ContentValues cv = new ContentValues();
+
          cv.put(COLUMN_INCOME, income);
          cv.put(COLUMN_DATE, date);
 
@@ -86,7 +89,7 @@ public class DbHelper extends SQLiteOpenHelper {
          else{
              Toast.makeText(context, "Successfully Updated!", Toast.LENGTH_SHORT).show();
          }
-    }
+    } */
 
 //    void updateData(double newValue, String id){
 //         SQLiteDatabase db = this.getWritableDatabase();

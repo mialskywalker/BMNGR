@@ -3,6 +3,7 @@ package com.MialAndroid.budget_manager;
 public class BudgetModel {
 
     private int id;
+    private String description;
     private Double income;
     private Double expense;
     private Double budget;
@@ -12,8 +13,9 @@ public class BudgetModel {
     // constructors
 
 
-    public BudgetModel(int id, Double income, String date) {
+    public BudgetModel(int id, String description, Double income, String date) {
         this.id = id;
+        this.description = description;
         this.income = income;
         this.date = date;
     }
@@ -27,6 +29,7 @@ public class BudgetModel {
     public String toString() {
         return "BudgetModel{" +
                 "id=" + id +
+                ", description=" + description +
                 ", income=" + income +
                 ", date='" + date + '\'' +
                 '}';
@@ -42,6 +45,10 @@ public class BudgetModel {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getDescription() { return description; }
+
+    public void setDescription(String description) { this.description = description; }
 
     public Double getIncome() {
         return income;

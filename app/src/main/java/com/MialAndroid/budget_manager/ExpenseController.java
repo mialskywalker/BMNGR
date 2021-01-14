@@ -25,6 +25,7 @@ public class ExpenseController extends AppCompatActivity {
 
     Button btnAdd;
     EditText expenseET;
+    EditText expenseDescET;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class ExpenseController extends AppCompatActivity {
         Button btnBack = findViewById(R.id.button_back);
         btnAdd = findViewById(R.id.button_addExpense);
         expenseET = findViewById(R.id.et_expense);
+        expenseDescET = findViewById(R.id.et_expense_text);
 
         mDisplayDate.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -82,13 +84,13 @@ public class ExpenseController extends AppCompatActivity {
                 BudgetModel budgetModel;
 
                 try {
-                    budgetModel = new BudgetModel(-1, Double.parseDouble(expenseET.getText().toString())*-1, mDisplayDate.getText().toString());
+                    budgetModel = new BudgetModel(-1,expenseDescET.getText().toString(), Double.parseDouble(expenseET.getText().toString())*-1, mDisplayDate.getText().toString());
                     Toast.makeText(ExpenseController.this, "Успешно добавяне!", Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e) {
 
                     Toast.makeText(ExpenseController.this, "Невалидни данни!", Toast.LENGTH_SHORT).show();
-                    budgetModel = new BudgetModel(-1, 0.0, "error");
+                    budgetModel = new BudgetModel(-1,"asd", 0.0, "error");
                 }
 
                 DbHelper dbHelper = new DbHelper(ExpenseController.this);

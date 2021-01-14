@@ -33,7 +33,7 @@ public class UpdateActivity extends AppCompatActivity {
                 confirmDialog();
             }
         });
-        updateButton.setOnClickListener(new View.OnClickListener() {
+      /*  updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DbHelper myDB = new DbHelper(UpdateActivity.this);
@@ -41,7 +41,7 @@ public class UpdateActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), DataVisualisation.class);
                 startActivity(intent);
             }
-        });
+        }); */
         getAndSetIntentData();
     }
 

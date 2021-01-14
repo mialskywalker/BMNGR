@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         DbHelper db = new DbHelper(this);
         Cursor cursor = db.readAllData();
             while(cursor.moveToNext()){
-                MainBudjetValue += Double.parseDouble(cursor.getString(1));
+                MainBudjetValue += Double.parseDouble(cursor.getString(2));
             }
 
         AvbMoney.setText(String.valueOf(MainBudjetValue));

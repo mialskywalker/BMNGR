@@ -27,6 +27,7 @@ public class IncomeController extends AppCompatActivity {
 
     Button btnAdd;
     EditText incomeET;
+    EditText descET;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class IncomeController extends AppCompatActivity {
         Button btnBack = findViewById(R.id.button_back);
         btnAdd = findViewById(R.id.button_addIncome);
         incomeET = findViewById(R.id.et_income);
+        descET = findViewById(R.id.et_income_text);
 
 
 
@@ -92,13 +94,13 @@ public class IncomeController extends AppCompatActivity {
                 BudgetModel budgetModel;
 
                 try {
-                    budgetModel = new BudgetModel(-1, Double.parseDouble(incomeET.getText().toString()), mDisplayDate.getText().toString());
+                    budgetModel = new BudgetModel(-1, descET.getText().toString(), Double.parseDouble(incomeET.getText().toString()), mDisplayDate.getText().toString());
                     Toast.makeText(IncomeController.this, "Успешно добавяне!", Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e) {
 
                     Toast.makeText(IncomeController.this, "Невалидни данни!", Toast.LENGTH_SHORT).show();
-                    budgetModel = new BudgetModel(-1, 0.0, "error");
+                    budgetModel = new BudgetModel(-1,"asd", 0.0, "error");
                 }
 
                 DbHelper dbHelper = new DbHelper(IncomeController.this);
