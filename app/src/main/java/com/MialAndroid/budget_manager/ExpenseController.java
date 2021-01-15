@@ -15,6 +15,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import java.util.Calendar;
 
 public class ExpenseController extends AppCompatActivity {
@@ -37,6 +43,20 @@ public class ExpenseController extends AppCompatActivity {
         btnAdd = findViewById(R.id.button_addExpense);
         expenseET = findViewById(R.id.et_expense);
         expenseDescET = findViewById(R.id.et_expense_text);
+
+
+        // Ads
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        AdView adView = (AdView)findViewById(R.id.adView2);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        adView.loadAd(adRequest);
 
         mDisplayDate.setOnClickListener(new View.OnClickListener(){
             @Override

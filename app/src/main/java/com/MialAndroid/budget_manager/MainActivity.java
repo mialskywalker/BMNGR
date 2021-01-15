@@ -9,6 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.AdView;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -21,6 +27,20 @@ public class MainActivity extends AppCompatActivity {
         Button btnViewData = findViewById(R.id.btnViewData);
         //Button btnChart = findViewById(R.id.btnChart);
         TextView AvbMoney = findViewById(R.id.available_money);
+
+
+        // Ads
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        AdView adView = (AdView)findViewById(R.id.adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        adView.loadAd(adRequest);
 
 
         double MainBudjetValue = 0;
